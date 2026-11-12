@@ -1,0 +1,68 @@
+---
+title: 9/3 Workshop
+authors:
+  - name: Sihyun Lee
+    affiliation: The University
+    roles: writing
+    corresponding: true
+bibliography: references.bib
+execute:
+  echo: true
+---
+
+## Getting Started
+
+```{python}
+from IPython.display import Markdown, display
+import requests
+
+# Going to get the data
+url = "https://raw.githubusercontent.com/"
+path = "adamrossnelson/why-program/refs/heads/main/"
+file = "Py-script-Qmd-notebook-comparisons.txt"
+
+response = requests.get(url + path + file, timeout=15)
+response.raise_for_status()
+my_text = response.text
+display(Markdown(my_text))
+```
+
+From here we can begin "analyzing" this text.
+
+```{python}
+display(Markdown(f"There are {len(my_text)} characters in this text"))
+```
+
+Lets ask how many capital letters are there in this text.
+
+```{python}
+print("T".isupper())
+print("t".isupper())
+```
+
+```{python}
+num_upper = 0
+
+for l in my_text:
+    if l.isupper(): num_upper += 1
+
+display(
+    Markdown(
+        f"There are {num_upper} capital upper case characters in this text."))
+```
+
+# Count the occurrences of a specific word
+
+```{python}
+the_counts = 0
+
+for w in my_text.split(' '):
+    if w.lower() == 'the': the_counts += 1
+
+display(
+  Markdown(
+    f"There count of 'the' is {the_counts}."))
+```
+
+## Section
+This is a simple placeholder for the manuscript's main document [@knuth84].
