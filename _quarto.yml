@@ -1,11 +1,14 @@
 project:
   type: website
+  output-dir: _site
+  render:
+    - index.ipynb
 
 website:
-  title: "PSYCH 750"
+  title: "Five-Sentence Chi-Square Paper"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.ipynb
         text: Home
 
 format:
@@ -15,5 +18,6 @@ format:
       hypothesis: true
 
 execute:
-  freeze: auto
+  echo: true
+  freeze: false
   cache: false
